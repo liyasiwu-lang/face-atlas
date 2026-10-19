@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Face & Beauty Atlas 识图实验室：在浏览器本地分析人物、妆容、产品或美甲图片，输出标签、置信度、判断依据与不确定性。">
+  <meta name="theme-color" content="#1d0f2c">
+  <title>识图实验室｜Face & Beauty Atlas</title>
+  <link rel="stylesheet" href="./styles.css?v=2.7">
+  <link rel="stylesheet" href="./recognize.css?v=2.2">
+</head>
+<body class="recognize-page">
+  <a class="skip-link" href="#recognizer">跳到上传区</a>
+  <header class="site-header lab-header">
+    <a class="brand" href="./index.html" aria-label="Face Atlas 首页">
+      <span class="brand-mark">FA</span>
+      <span><b>FACE ATLAS</b><small>面部、身形与美妆图鉴</small></span>
+    </a>
+    <nav aria-label="图鉴导航">
+      <a href="./index.html">面部特征</a>
+      <a href="./beauty.html">美妆图鉴</a>
+      <a href="./body.html">身形图鉴</a>
+      <a class="active" href="./recognize.html" aria-current="page">识图实验室</a>
+      <a href="./create.html">Prompt 工作台</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="lab-hero">
+      <p class="lab-kicker">LOCAL VISUAL ANALYSIS · PHASE 3</p>
+      <h1>上传一张图，<br><em>把视觉拆成标签。</em></h1>
+      <div class="hero-note">
+        <span>01</span><p>面部、身形与妆容</p><span>02</span><p>单品、色彩与质地</p><span>03</span><p>甲型与美甲效果</p>
+      </div>
+    </section>
+
+    <section id="recognizer" class="recognizer-shell" aria-labelledby="recognizer-title">
+      <div class="lab-status" role="status">
+        <i aria-hidden="true"></i>
+        <div><b>第三阶段 · 可框选、可反馈的图例识别</b><p>图片只在你的浏览器中分析。你可以手动框选重点区域、查看分组候选，并用反馈调整本机后续排序。</p></div>
+      </div>
+
+      <div class="recognizer-head">
+        <div><p class="lab-kicker">CHOOSE A TASK</p><h2 id="recognizer-title">这张图主要想识别什么？</h2></div>
+        <p>先选择主要识别目标。单主体、清晰正面、中性光照片更容易得到稳定结果。</p>
+        <button id="history-open" class="history-open" type="button">最近识别 <span id="history-count">0</span></button>
+      </div>
+
+      <div id="task-modes" class="task-modes" role="radiogroup" aria-label="识图类型">
+        <button type="button" role="radio" aria-checked="true" data-mode="face"><b>面部特征</b><span>脸型 · 眉眼 · 鼻唇 · 肤质</span></button>
+        <button type="button" role="radio" aria-checked="false" data-mode="body"><b>人体身形</b><span>肩腰髋 · 轮廓 · 纵向比例</span></button>
+        <button type="button" role="radio" aria-checked="false" data-mode="makeup"><b>完整妆容</b><span>风格 · 色彩 · 妆效 · 部位</span></button>
+        <button type="button" role="radio" aria-checked="false" data-mode="product"><b>美妆产品</b><span>品类 · 色号 · 质地 · 光泽</span></button>
+        <button type="button" role="radio" aria-checked="false" data-mode="nail"><b>美甲</b><span>甲型 · 长度 · 构图 · 效果</span></button>
+      </div>
+
+      <div class="recognizer-grid">
+        <section class="upload-panel" aria-labelledby="upload-title">
+          <div class="panel-label"><span>INPUT</span><b id="upload-title">图片输入</b></div>
+          <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" hidden aria-label="上传待识别图片">
+          <button id="drop-zone" class="drop-zone" type="button">
+            <span class="upload-symbol" aria-hidden="true">＋</span>
+            <b>拖放图片到这里</b>
+            <span>或点击选择 JPG、PNG、WebP</span>
+            <small>单张图片 · 最大 12 MB</small>
+          </button>
+          <div id="preview-wrap" class="preview-wrap" hidden>
+            <div id="image-stage" class="image-stage">
+              <img id="image-preview" alt="待识别图片预览">
+              <div id="focus-box" class="focus-box" hidden aria-hidden="true"><span>识别区域</span></div>
+            </div>
+            <div class="preview-meta"><div><b id="file-name"></b><span id="file-meta"></span></div><button id="remove-image" type="button">移除</button></div>
+            <div id="focus-tools" class="focus-tools" hidden>
+              <button id="focus-toggle" type="button">框选识别区域</button>
+              <button id="focus-reset" type="button" hidden>恢复整张图</button>
+              <span id="focus-status" aria-live="polite">当前自动定位主体</span>
+            </div>
+          </div>
+          <div class="upload-actions">
+            <button id="choose-image" class="secondary-action" type="button">选择图片</button>
+            <button id="show-demo" class="primary-action" type="button" disabled>开始本地识别 →</button>
+          </div>
+          <p id="upload-error" class="upload-error" role="alert" hidden></p>
+          <div class="photo-guide" aria-label="拍摄建议" aria-live="polite"><span id="photo-guide-title">面部拍摄</span><p id="photo-guide-text">单人正面、头部摆正，完整拍入发际线和下巴；避免刘海、手部或强滤镜遮挡五官。</p></div>
+          <div class="privacy-line"><span aria-hidden="true">◇</span><p><b>隐私说明</b> 图片像素与面部关键点只在本机内存中处理，离开页面即释放；页面仅从外部加载通用识别模型文件。</p></div>
+        </section>
+
+        <section class="result-panel" aria-labelledby="result-title">
+          <div class="panel-label"><span>OUTPUT</span><b id="result-title">多标签结果</b></div>
+          <div id="result-empty" class="result-empty">
+            <span>03</span><h3>等待图片</h3><p>上传后将生成“标签 + 置信度 + 判断依据 + 不确定性”的实际分析结果。</p>
+          </div>
+          <div id="result-demo" class="result-demo" hidden>
+            <div class="demo-warning"><b id="analysis-badge">本地分析</b><span id="analysis-method">正在读取图像特征</span></div>
+            <div id="result-summary" class="result-summary"></div>
+            <div id="visual-profile" class="visual-profile"></div>
+            <section id="confirmed-corrections" class="confirmed-corrections" hidden><div class="confirmed-heading"><b>人工确认</b><span>以你的判断为准，不计入模型置信度</span></div><div id="confirmed-correction-list"></div></section>
+            <div id="result-list" class="result-list" aria-live="polite"></div>
+            <div class="feedback-note"><span>反馈只保存在当前浏览器；校准记录不包含图片或文件名。</span><div class="feedback-tools"><b id="calibration-count">0 条校准</b><button id="export-calibration" type="button" disabled>导出记录</button><button id="clear-feedback" type="button">清除本机反馈</button></div></div>
+            <form id="correction-form" class="correction-form"><label for="correction-input"><b>正确答案没出现？</b><span>补充一个应当匹配的标签</span></label><div><input id="correction-input" type="text" list="correction-options" maxlength="40" placeholder="例如：猫眼甲、果冻、韩系清透妆" autocomplete="off"><datalist id="correction-options"></datalist><button id="correction-submit" type="submit" disabled>加入校准</button></div><small id="correction-status" aria-live="polite"></small></form>
+            <div class="uncertainty-box"><span>不确定性</span><p id="uncertainty-text"></p></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="output-spec" aria-labelledby="spec-title">
+      <div><p class="lab-kicker">EXPLAINABLE BY DESIGN</p><h2 id="spec-title">识别结果不只给一个词。</h2></div>
+      <div class="spec-list">
+        <article><span>01</span><h3>多标签</h3><p>把脸型、眼型、眉形、色调、质地、风格等不同维度分开输出，允许共存。</p></article>
+        <article><span>02</span><h3>置信度</h3><p>展示每个候选的相对把握，不把视觉判断伪装成绝对结论。</p></article>
+        <article><span>03</span><h3>可观察依据</h3><p>解释轮廓、角度、反光、色彩分布等判断线索，方便人工复核。</p></article>
+        <article><span>04</span><h3>不确定性</h3><p>主动提示光线、滤镜、遮挡、透视与屏幕色差可能造成的偏差。</p></article>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="comparison-dialog" class="comparison-dialog" aria-labelledby="comparison-title">
+    <form method="dialog" class="comparison-close-row"><span>LIBRARY COMPARISON</span><button type="submit" aria-label="关闭图例对照">关闭 ×</button></form>
+    <div class="comparison-heading"><div><small id="comparison-group">资料库候选</small><h2 id="comparison-title">图例对照</h2></div><strong id="comparison-score">—</strong></div>
+    <div class="comparison-grid">
+      <figure><div class="comparison-source"><img id="comparison-source" alt="本次上传图片的识别区域"></div><figcaption>上传图 · 当前识别区域</figcaption></figure>
+      <figure><div id="comparison-reference" class="comparison-reference" role="img" aria-labelledby="comparison-reference-caption"></div><figcaption id="comparison-reference-caption">资料库图例</figcaption></figure>
+    </div>
+    <section class="comparison-explanation"><b>判断依据</b><p id="comparison-evidence"></p><small>接近度来自局部颜色、明暗、反光、纹理与轮廓的综合比较，仅用于候选排序。<span class="kbd-hint">键盘：← → 切换候选，Esc 关闭</span></small></section>
+  </dialog>
+
+  <dialog id="history-dialog" class="history-dialog" aria-labelledby="history-title">
+    <form method="dialog" class="history-dialog-head"><div><small>LOCAL HISTORY</small><h2 id="history-title">最近识别</h2><p>只保存结果摘要，不保存原图、缩略图或文件名。</p></div><button type="submit" aria-label="关闭最近识别">关闭 ×</button></form>
+    <div id="history-list" class="history-list"></div>
+    <div class="history-dialog-foot"><span>最多保留最近 12 条，仅保存在当前浏览器。</span><button id="history-clear" type="button">清空记录</button></div>
+  </dialog>
+
+  <footer>
+    <div><b>VISUAL TAGGING LAB</b><span>本机历史 · v1.2</span></div>
+    <p>识图只应用于描述性美妆与外观标签，不用于推断身份、族裔、性别、年龄、健康、性格或吸引力。色号识别只能作为屏幕端近似参考。</p>
+    <a href="#recognizer">返回上传区 ↑</a>
+  </footer>
+
+  <script src="./beauty-data.js?v=3.30"></script>
+  <script src="./examples-data.js?v=1.26"></script>
+  <script src="./body-data.js?v=1.8.5"></script>
+  <script src="./body-examples.js?v=1.7"></script>
+  <script type="module" src="./recognize.js?v=1.9"></script>
+</body>
+</html>

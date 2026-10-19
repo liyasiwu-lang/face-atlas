@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Face Atlas Prompt 工作台：将面部、身形、妆容、美妆产品与美甲需求转换为可核对、可复制的结构化提示词。">
+  <meta name="theme-color" content="#160d20">
+  <title>Prompt 工作台｜Face & Beauty Atlas</title>
+  <link rel="stylesheet" href="./styles.css?v=2.7">
+  <link rel="stylesheet" href="./create.css?v=2.2">
+  <link rel="stylesheet" href="./create-responsive.css">
+</head>
+<body class="create-page">
+  <a class="skip-link" href="#creator">跳到创作工作区</a>
+  <header class="site-header creator-header">
+    <a class="brand" href="./index.html" aria-label="Face Atlas 首页">
+      <span class="brand-mark">FA</span>
+      <span><b>FACE ATLAS</b><small>面部、身形与美妆图鉴</small></span>
+    </a>
+    <nav aria-label="图鉴导航">
+      <a href="./index.html">面部特征</a>
+      <a href="./beauty.html">美妆图鉴</a>
+      <a href="./body.html">身形图鉴</a>
+      <a href="./recognize.html">识图实验室</a>
+      <a class="active" href="./create.html" aria-current="page">Prompt 工作台</a>
+    </nav>
+  </header>
+
+  <main id="creator" class="creator-shell">
+    <section class="creator-intro">
+      <div><p class="creator-kicker">TEXT TO VISUAL · PROMPT CONTROL</p><h1>先把要求说清楚，<br><em>再生成。</em></h1></div>
+      <p>自然语言会转换成“必须出现、禁止出现、构图与文字”四组约束，并编译为可复制的专业 Prompt。当前版本不直接生成图片。</p>
+    </section>
+
+    <section class="creator-status" aria-label="当前阶段">
+      <span>01</span><div><b>Prompt 工作台 · 结构化与生成前检查</b><p>自动提示冲突、遗漏与高风险要求；生成服务尚未连接，页面不会展示示例图或伪造结果。</p></div>
+    </section>
+
+    <section class="creator-modes" aria-labelledby="mode-title">
+      <div><p class="creator-kicker">CHOOSE A TARGET</p><h2 id="mode-title">要生成什么？</h2></div>
+      <div id="create-modes" role="radiogroup" aria-label="生成目标">
+        <button type="button" role="radio" aria-checked="true" tabindex="0" data-mode="face"><b>人像面部</b><span>脸型 · 眉眼 · 鼻唇 · 肤质</span></button>
+        <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="body"><b>人体身形</b><span>轮廓 · 肩腰髋 · 躯干四肢</span></button>
+        <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="makeup"><b>完整妆容</b><span>风格 · 色彩 · 妆效 · 部位</span></button>
+        <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="product"><b>美妆产品</b><span>品类 · 包装 · 色号 · 质地</span></button>
+        <button type="button" role="radio" aria-checked="false" tabindex="-1" data-mode="nail"><b>美甲</b><span>甲型 · 长度 · 构图 · 效果</span></button>
+      </div>
+    </section>
+
+    <section class="creator-grid">
+      <div class="brief-panel">
+        <div class="panel-heading"><span>INPUT</span><b>文字需求</b></div>
+        <label class="brief-field" for="brief-input"><span>自然语言或专业 Prompt</span><textarea id="brief-input" rows="6" placeholder="例如：一只手的中长杏仁甲，透明紫色猫眼，五指完整，纯灰背景，不要戒指和文字。"></textarea></label>
+        <div class="brief-actions"><button id="parse-brief" class="primary-button" type="button">解析文字要求</button><button id="restore-draft" type="button">恢复本机草稿</button></div>
+
+        <div class="library-picker">
+          <div class="subheading"><div><b>资料库关键词</b><span id="library-scope">823 个面部标签</span></div><button id="clear-tags" type="button">清空</button></div>
+          <label class="tag-search" for="tag-search"><span aria-hidden="true">⌕</span><input id="tag-search" type="search" placeholder="搜索标签并添加……" autocomplete="off"></label>
+          <div id="tag-suggestions" class="tag-suggestions" aria-live="polite"></div>
+          <div id="selected-tags" class="selected-tags"><p>还没有添加资料库标签。</p></div>
+        </div>
+
+        <div class="control-grid">
+          <label>构图<select id="composition"><option>单一主体特写</option><option>正面半身人像</option><option>正面全身研究图</option><option>面部局部特写</option><option>平铺产品图</option><option>手部完整特写</option></select></label>
+          <label>画幅<select id="ratio"><option value="1:1">1:1 方图</option><option value="4:5">4:5 竖图</option><option value="3:4">3:4 竖图</option><option value="16:9">16:9 横图</option></select></label>
+          <label>背景<select id="background"><option>纯中性灰背景</option><option>纯白背景</option><option>纯黑背景</option><option>柔和影棚背景</option><option>自然室内背景</option></select></label>
+          <label>光线<select id="lighting"><option>中性柔光</option><option>均匀影棚光</option><option>自然窗光</option><option>高对比时尚光</option></select></label>
+        </div>
+
+        <label class="brief-field" for="required-input"><span>必须出现</span><input id="required-input" type="text" placeholder="用逗号分隔，例如：五指完整、紫色猫眼光带"></label>
+        <label class="brief-field" for="forbidden-input"><span>禁止出现</span><input id="forbidden-input" type="text" value="多余主体，文字，水印，Logo，饰品，结构错误" placeholder="用逗号分隔"></label>
+
+        <div id="text-control" class="text-control" hidden>
+          <label><input id="exact-text-enabled" type="checkbox"> 图片中需要准确文字</label>
+          <input id="exact-text-input" type="text" maxlength="80" placeholder="输入必须逐字一致的包装文字" aria-label="图片中必须逐字一致的包装文字">
+          <p>图片模型可能拼错包装文字。正式生成时建议先生成无字包装，再用排版层精确叠加。</p>
+        </div>
+      </div>
+
+      <aside class="interpret-panel" aria-labelledby="interpret-title">
+        <div class="panel-heading"><span>OUTPUT</span><b id="interpret-title">系统理解</b></div>
+        <div class="interpret-state"><span id="interpret-number">02</span><div><b id="interpret-heading">等待文字要求</b><p id="interpret-note">输入描述或添加资料库标签后，这里会实时整理生成约束。</p></div></div>
+        <div class="constraint-list">
+          <section><div><span>必须出现</span><b id="must-count">0</b></div><ul id="must-list"><li>尚未指定</li></ul></section>
+          <section><div><span>禁止出现</span><b id="avoid-count">0</b></div><ul id="avoid-list"><li>尚未指定</li></ul></section>
+          <section><div><span>构图设置</span><b>固定</b></div><ul id="setting-list"></ul></section>
+          <section id="exact-text-section" hidden><div><span>精确文字</span><b>后期排版</b></div><ul id="exact-text-list"></ul></section>
+        </div>
+
+        <section class="preflight-panel" aria-labelledby="preflight-title">
+          <div class="preflight-score"><strong id="preflight-score">0</strong><span>准备度</span></div>
+          <div><div class="preflight-heading"><b id="preflight-title">生成前检查</b><em id="preflight-level">等待要求</em></div><ul id="preflight-list"><li>填写要求后自动检查容易漏画或互相冲突的内容。</li></ul></div>
+        </section>
+
+        <div class="compiled-block">
+          <div><b id="compiled-prompt-label">编译后的专业 Prompt</b><button id="copy-prompt" type="button">复制</button></div>
+          <textarea id="compiled-prompt" rows="12" readonly aria-labelledby="compiled-prompt-label" aria-readonly="true"></textarea>
+        </div>
+        <div class="creator-actions"><button id="save-draft" type="button">保存本机草稿</button><button id="generate-image" class="generate-button" type="button" disabled>生成服务待连接</button></div>
+        <p id="creator-message" class="creator-message" aria-live="polite"></p>
+
+        <section id="generation-result" class="generation-result" aria-labelledby="generation-result-title">
+          <div class="generation-result-heading"><div><span>IMAGE RESULT</span><b id="generation-result-title">生成结果</b></div><em id="generation-status">未连接</em></div>
+          <div id="generation-empty" class="generation-empty"><b>等待真实生成服务</b><p>服务接入前这里只显示状态说明，不会展示示例图或伪造结果。</p></div>
+          <img id="generated-image" alt="根据当前文字要求生成的美妆图片" hidden>
+          <p id="generation-detail" class="generation-detail" hidden></p>
+          <fieldset id="result-review" class="result-review" hidden><legend>生成后逐项核对 <span id="review-progress">0/0</span></legend><div id="result-review-items"></div><p>勾选只保存在当前页面，不代表系统自动确认。</p></fieldset>
+          <div id="generation-result-actions" class="generation-result-actions" hidden><a id="download-image" download="face-atlas-creation.png">下载图片</a><button id="regenerate-image" type="button">按同一要求重试</button><a href="./recognize.html">去识图实验室复核</a></div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="creator-footer"><div><b>PROMPT WORKBENCH</b><span>结构化提示词 · v0.4</span></div><p>整理资料库标签、冲突检查与构图约束；真实出图能力以生成服务连接状态为准。</p><a href="#creator">返回顶部 ↑</a></footer>
+  <script src="./data.js?v=5.6"></script>
+  <script src="./body-data.js?v=1.8.5"></script>
+  <script src="./beauty-data.js?v=3.30"></script>
+  <script src="./create-config.js"></script>
+  <script src="./create.js?v=3.4"></script>
+</body>
+</html>

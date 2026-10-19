@@ -1,0 +1,124 @@
+.product-visual {
+  min-height: 86px;
+  margin: -1.1rem -1.1rem 0.9rem;
+  padding: 1rem;
+  background: #edf0ff;
+  border-bottom: 1px solid #d8ddf5;
+  display: grid;
+  align-content: center;
+  gap: 0.15rem;
+}
+
+.product-visual > span {
+  color: #315be8;
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.product-visual > b {
+  font: 500 1.2rem Georgia, "Songti SC", serif;
+}
+
+.product-visual > small {
+  color: #625e75;
+  font-size: 0.7rem;
+}
+
+.product-visual.large {
+  min-height: 190px;
+  margin: 0 0 1.2rem;
+  border-radius: 15px;
+  padding: 1.5rem;
+  background: #edf0ff;
+}
+
+.product-visual.large > b {
+  font-size: clamp(1.8rem, 5vw, 3.5rem);
+}
+
+.beauty-card .product-example {
+  width: auto;
+  max-width: none;
+  margin: -1.1rem -1.1rem 0.9rem;
+  border-radius: 16px 16px 0 0;
+  border-bottom: 1px solid #d8ddf5;
+}
+
+.product-example.large {
+  width: min(100%, 420px);
+}
+
+.product-photo {
+  background: #fff;
+}
+
+.product-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 0.55rem;
+}
+
+.brand-products {
+  margin-top: 1rem;
+  border-top: 1px solid #ded9e1;
+  padding-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+}
+
+.brand-products > div {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand-products > div span {
+  color: #315be8;
+  font-size: 0.7rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+}
+
+.brand-products article {
+  border: 1px solid #ded9e1;
+  border-radius: 12px;
+  padding: 0.85rem;
+  background: #faf9fb;
+}
+
+.brand-products article > span,
+.brand-products article > small {
+  color: #716b75;
+  font-size: 0.72rem;
+}
+
+.brand-products article h3 {
+  margin: 0.45rem 0 0.1rem;
+  font-size: 1rem;
+}
+
+.brand-products article p {
+  margin: 0 0 0.55rem;
+  color: #315be8;
+  font: italic 0.78rem Georgia, serif;
+}
+
+.brand-products-empty {
+  margin: 1rem 0 0;
+  padding: 0.85rem;
+  border: 1px dashed #cbc5cf;
+  border-radius: 10px;
+  color: #716b75;
+  font-size: 0.82rem;
+}
+
+@media (max-width: 560px) {
+  .brand-products {
+    grid-template-columns: 1fr;
+  }
+}

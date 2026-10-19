@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="description" content="Body Atlas：以肩、腰、髋、躯干和四肢的相对比例，建立中性、可观察的人体身形科普图鉴。">
+  <meta name="theme-color" content="#21122f">
+  <title>Body Atlas｜人体身形与比例图鉴</title>
+  <link rel="stylesheet" href="./styles.css?v=2.7">
+  <link rel="stylesheet" href="./body.css?v=1.12">
+</head>
+<body class="body-page">
+  <a class="skip-link" href="#body-explorer">跳到身形图鉴</a>
+  <header class="site-header body-header">
+    <a class="brand" href="./index.html" aria-label="Face Atlas 首页">
+      <span class="brand-mark">FA</span>
+      <span><b>FACE ATLAS</b><small>面部、身形与美妆图鉴</small></span>
+    </a>
+    <nav class="atlas-nav" aria-label="图鉴导航">
+      <a href="./index.html">面部特征</a>
+      <a href="./beauty.html">美妆图鉴</a>
+      <a class="active" href="./body.html" aria-current="page">身形图鉴</a>
+      <a href="#body-volume">量感五级</a>
+      <a href="./recognize.html">识图实验室</a>
+      <a href="./create.html">Prompt 工作台</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="body-intro" aria-labelledby="body-title">
+      <div class="body-intro-copy">
+        <p class="body-kicker">BODY ATLAS · PROPORTION BEFORE LABELS</p>
+        <h1 id="body-title">读懂身形，<br>从<em>比例关系</em>开始。</h1>
+        <p class="body-lede">身形不是一个水果名称，也不是审美等级。这里把整体印象拆回肩、腰、髋、躯干和四肢的可观察关系，让每个标签都有明确边界。</p>
+        <div class="body-stats" aria-label="身形资料库规模">
+          <div><strong id="body-tag-total">48</strong><span>身形标签</span></div>
+          <div><strong id="body-group-total">6</strong><span>观察区域</span></div>
+          <div><strong id="body-example-total">48</strong><span>比例图例</span></div>
+        </div>
+      </div>
+      <figure class="body-reference-plate" aria-label="四种常见组合轮廓的全身参考">
+        <div class="body-reference-cell"><span class="body-sprite" style="--x:0%;--y:0%"></span><b>H</b></div>
+        <div class="body-reference-cell"><span class="body-sprite" style="--x:33.333%;--y:0%"></span><b>A</b></div>
+        <div class="body-reference-cell"><span class="body-sprite" style="--x:66.667%;--y:0%"></span><b>V</b></div>
+        <div class="body-reference-cell"><span class="body-sprite" style="--x:100%;--y:0%"></span><b>X</b></div>
+        <figcaption>组合轮廓只是入口；具体判断仍需回到分维度比例。</figcaption>
+      </figure>
+    </section>
+
+    <section class="body-principle-band" aria-label="身形观察原则">
+      <p><b>先测量，后命名</b><span>先找肩峰、自然腰线、髋部最宽点与关节点。</span></p>
+      <p><b>比例，不是数值</b><span>标签描述同一个体内部及相邻区域的相对关系。</span></p>
+      <p><b>允许组合</b><span>整体轮廓、腰线位置和四肢比例可以同时成立。</span></p>
+    </section>
+
+    <section class="body-volume-section" id="body-volume" aria-labelledby="body-volume-title">
+      <div class="body-section-heading">
+        <div>
+          <p class="body-kicker">VISUAL VOLUME REFERENCE</p>
+          <h2 id="body-volume-title">体型量感五级对照</h2>
+        </div>
+        <p>在统一正面机位下观察身体轮廓从纤细到饱满的连续变化。性别分栏用于呈现常见脂肪分布差异，不代表性别身份。</p>
+      </div>
+
+      <div class="body-volume-toolbar">
+        <div class="body-volume-tabs" role="tablist" aria-label="体型量感参考组">
+          <button id="body-volume-tab-female" type="button" role="tab" aria-selected="true" aria-controls="body-volume-panel-female" data-volume-tab="female">女性参考</button>
+          <button id="body-volume-tab-male" type="button" role="tab" aria-selected="false" aria-controls="body-volume-panel-male" data-volume-tab="male" tabindex="-1">男性参考</button>
+        </div>
+        <p><b>观察口径</b><span>只描述可见量感，不反推体重、体脂率或健康状态。</span></p>
+      </div>
+
+      <div id="body-volume-panel-female" class="body-volume-panel" role="tabpanel" aria-labelledby="body-volume-tab-female">
+        <figure class="body-volume-figure">
+          <div class="body-volume-scroll" tabindex="0" aria-label="女性体型量感五级横向对照">
+            <div class="body-volume-canvas">
+              <img src="./assets/body/female-visual-volume-5-level.png" width="2352" height="1008" loading="lazy" decoding="async" alt="同一观察条件下，女性参考体型从纤细型到饱满型的五级全身正面对照">
+              <ol class="body-volume-scale">
+                <li><span>01</span><b>纤细型</b><small>整体软组织量感较低</small></li>
+                <li><span>02</span><b>偏纤细型</b><small>轮廓轻盈，曲线较缓</small></li>
+                <li><span>03</span><b>中等量感</b><small>各区域量感相对均衡</small></li>
+                <li><span>04</span><b>偏饱满型</b><small>腰腹与四肢轮廓趋柔和</small></li>
+                <li><span>05</span><b>饱满型</b><small>整体软组织量感较高</small></li>
+              </ol>
+            </div>
+          </div>
+          <figcaption>女性参考组 · 五级为视觉描述，不对应固定体脂率分界。</figcaption>
+        </figure>
+      </div>
+
+      <div id="body-volume-panel-male" class="body-volume-panel" role="tabpanel" aria-labelledby="body-volume-tab-male" hidden>
+        <figure class="body-volume-figure">
+          <div class="body-volume-scroll" tabindex="0" aria-label="男性体型量感五级横向对照">
+            <div class="body-volume-canvas">
+              <img src="./assets/body/male-visual-volume-5-level.png" width="2352" height="1008" loading="lazy" decoding="async" alt="同一观察条件下，男性参考体型从纤细型到饱满型的五级全身正面对照">
+              <ol class="body-volume-scale">
+                <li><span>01</span><b>纤细型</b><small>整体软组织量感较低</small></li>
+                <li><span>02</span><b>偏纤细型</b><small>轮廓轻盈，腰腹量感较低</small></li>
+                <li><span>03</span><b>中等量感</b><small>各区域量感相对均衡</small></li>
+                <li><span>04</span><b>偏饱满型</b><small>腰腹与躯干轮廓趋柔和</small></li>
+                <li><span>05</span><b>饱满型</b><small>整体软组织量感较高</small></li>
+              </ol>
+            </div>
+          </div>
+          <figcaption>男性参考组 · 五级为视觉描述，不对应固定体脂率分界。</figcaption>
+        </figure>
+      </div>
+
+      <div class="body-volume-notes" aria-label="量感五级使用边界">
+        <p><b>视觉量感 ≠ 体脂率</b><span>照片无法替代 DXA、BIA 或专业测量。</span></p>
+        <p><b>量感 ≠ 体重</b><span>骨架、肌肉和脂肪分布都会改变轮廓。</span></p>
+        <p><b>描述 ≠ 评价</b><span>五级没有优劣顺序，也不用于健康判断。</span></p>
+      </div>
+    </section>
+
+    <section class="body-explorer" id="body-explorer" aria-labelledby="body-explorer-title">
+      <div class="body-section-heading">
+        <div>
+          <p class="body-kicker">INTERACTIVE BODY ATLAS</p>
+          <h2 id="body-explorer-title">身形标签资料库</h2>
+        </div>
+        <p>所有标签都以自然站立、统一机位和相对比例为前提，不推断体重、健康、性格或性别。</p>
+      </div>
+
+      <div class="body-search-band">
+        <label class="body-search" for="body-search-input">
+          <span aria-hidden="true">⌕</span>
+          <input id="body-search-input" type="search" placeholder="搜索：X形轮廓、高腰线、长躯干……" autocomplete="off">
+        </label>
+        <button id="body-reset" class="body-reset" type="button">重置</button>
+      </div>
+
+      <div class="body-filter-block">
+        <div class="body-filter-row">
+          <span>观察区域</span>
+          <div id="body-group-filters" class="body-chip-group"></div>
+        </div>
+        <div class="body-filter-row">
+          <span>标签性质</span>
+          <div id="body-type-filters" class="body-chip-group"></div>
+        </div>
+      </div>
+
+      <div class="body-results-bar" aria-live="polite">
+        <p><strong id="body-result-count">0</strong> 条记录</p>
+        <label>排序
+          <select id="body-sort">
+            <option value="default">资料库顺序</option>
+            <option value="name">名称</option>
+            <option value="group">观察区域</option>
+          </select>
+        </label>
+      </div>
+      <div id="body-grid" class="body-grid"></div>
+      <div id="body-empty" class="body-empty" hidden role="status">
+        <b>没有找到对应标签</b>
+        <p>换一个名称、英文名或观察维度再试试。</p>
+        <p class="empty-hint"><kbd>Esc</kbd> 清除搜索词</p>
+      </div>
+      <button id="body-load-more" class="body-load-more" type="button">显示更多</button>
+    </section>
+
+    <section class="body-compare-section" id="body-compare" aria-labelledby="body-compare-title">
+      <div class="body-section-heading light">
+        <div>
+          <p class="body-kicker">PROPORTION CHECK</p>
+          <h2 id="body-compare-title">名称相近，测量区间不同</h2>
+        </div>
+        <p>身形判断最常见的错误，是把相邻但不同的观察区间当作同一个标签。</p>
+      </div>
+      <div class="body-compare-layout">
+        <div class="body-compare-index">
+          <label class="body-compare-filter" for="body-compare-group">
+            <span>对照类别</span>
+            <select id="body-compare-group" aria-controls="body-compare-tabs"></select>
+          </label>
+          <div id="body-compare-tabs" class="body-compare-tabs" role="tablist" aria-label="身形易混标签"></div>
+        </div>
+        <article id="body-compare-detail" class="body-compare-detail" role="tabpanel" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <section class="body-method-section" id="body-method" aria-labelledby="body-method-title">
+      <div>
+        <p class="body-kicker">OBSERVATION PROTOCOL</p>
+        <h2 id="body-method-title">可靠观察的三个前提</h2>
+        <p>姿势、镜头和服装会快速改变身形印象。资料库只在观察条件可控时讨论比例。</p>
+      </div>
+      <ol>
+        <li><span>01</span><div><b>自然站立</b><p>双脚均匀承重，手臂自然垂落，不刻意挺胸、收腹或沉肩。</p></div></li>
+        <li><span>02</span><div><b>统一机位</b><p>相机保持水平，机位接近腰部高度，避免广角近拍造成四肢变形。</p></div></li>
+        <li><span>03</span><div><b>多角度核对</b><p>正面判断宽度与线条，侧面判断纵深，后面确认肩髋和左右状态。</p></div></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>BODY ATLAS</b><span>人体身形与比例图鉴 · v1.8</span></div>
+    <p>本模块提供描述性科普，不用于判断美丑、性格、性别、年龄、体重、体脂率或健康状况。左右不对称等状态标签仅记录可见现象，不构成医学结论。</p>
+    <div class="footer-links"><a href="./methodology.html">资料来源与方法论</a><a href="#body-title">返回顶部 ↑</a></div>
+  </footer>
+
+  <dialog id="body-dialog" class="tag-dialog body-dialog" aria-labelledby="body-dialog-title">
+    <button class="dialog-close" type="button" aria-label="关闭">×</button>
+    <div id="body-dialog-content"><h2 id="body-dialog-title"></h2></div>
+  </dialog>
+
+  <script src="./body-data.js?v=1.8.5"></script>
+  <script src="./body-examples.js?v=1.7"></script>
+  <script src="./sources-data.js?v=1.12"></script>
+  <script src="./body.js?v=1.16"></script>
+</body>
+</html>

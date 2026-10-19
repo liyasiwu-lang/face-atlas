@@ -1,0 +1,58 @@
+.methodology-page{background:#f7f5f8}
+.methodology-header nav{gap:1.4rem}
+.methodology-intro{padding:clamp(4rem,9vw,8rem) clamp(1.2rem,8vw,9rem);background:#21122f;color:#fff}
+.methodology-kicker{margin:0 0 .8rem;color:#6f35a5;font-size:.72rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase}
+.methodology-intro .methodology-kicker{color:#d7ff69}
+.methodology-intro h1{max-width:980px;margin:0;font-size:clamp(3rem,7vw,6.8rem);letter-spacing:0}
+.methodology-intro>p:not(.methodology-kicker){max-width:760px;margin:2rem 0 0;color:#d6cadb;font-size:1rem}
+.methodology-status{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));max-width:760px;margin:3rem 0 0;border-top:1px solid #594862}
+.methodology-status div{padding:1rem 1rem 0 0}
+.methodology-status dt{font-size:.68rem;color:#ad9bb5}
+.methodology-status dd{margin:.2rem 0 0;font-weight:800;color:#fff}
+.methodology-band,.revision-section{display:grid;grid-template-columns:minmax(240px,.7fr) minmax(0,1.3fr);gap:clamp(2rem,7vw,8rem);padding:clamp(3.5rem,7vw,6rem) clamp(1.2rem,8vw,9rem)}
+.methodology-band h2,.methodology-heading h2,.revision-section h2{margin:0;font:500 clamp(2.2rem,5vw,4.5rem)/1.05 Georgia,"Songti SC",serif;letter-spacing:0}
+.status-definition{border-top:1px solid #cfc6d2}
+.status-definition p{margin:0;padding:1.2rem 0;border-bottom:1px solid #cfc6d2;color:#554d59}
+.status-definition b{display:block;margin-bottom:.35rem;color:#17131b}
+.editorial-protocol,.source-section{padding:clamp(4rem,8vw,7rem) clamp(1.2rem,8vw,9rem)}
+.editorial-protocol{background:#fff}
+.source-matrix-section{padding:clamp(4rem,8vw,7rem) clamp(1.2rem,8vw,9rem);background:#21122f;color:#fff}
+.source-matrix-section .methodology-kicker{color:#d7ff69}.source-matrix-section .methodology-heading>p{color:#c8bacd}
+.source-matrix{border-top:1px solid #66546e}.source-matrix>div{display:grid;grid-template-columns:.7fr 1fr 1.25fr 1.15fr;gap:1rem;padding:1rem 0;border-bottom:1px solid #55455e}
+.source-matrix-head{color:#a99caf;font-size:.68rem;letter-spacing:.08em}.source-matrix strong{color:#d7ff69;font-size:.82rem}.source-matrix span{color:#d7cedb;font-size:.76rem;line-height:1.6}
+.methodology-heading{display:flex;align-items:end;justify-content:space-between;gap:2rem;margin-bottom:2.5rem}
+.methodology-heading>p{max-width:520px;margin:0;color:#6f6874}
+.protocol-list{list-style:none;margin:0;padding:0;border-top:1px solid #d8d0db}
+.protocol-list li{display:grid;grid-template-columns:70px minmax(0,1fr);gap:1rem;padding:1.5rem 0;border-bottom:1px solid #d8d0db}
+.protocol-list>li>span{color:#ee684f;font:italic 1.1rem Georgia,serif}
+.protocol-list h3{margin:0 0 .35rem;font-size:1.15rem}
+.protocol-list p{margin:0;color:#6f6874}
+.source-register{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:#cfc6d2;border:1px solid #cfc6d2}
+.source-card{min-width:0;padding:1.5rem;background:#fff}
+.source-card>span{color:#6f35a5;font-size:.68rem;font-weight:800;letter-spacing:.08em}
+.source-card h3{margin:.45rem 0 .2rem;font-size:1.18rem}
+.source-subtitle{min-height:3.2em;color:#6f6874;font-size:.78rem}
+.source-card p:not(.source-subtitle){font-size:.8rem;color:#514b54}
+.source-card p b{display:block;color:#17131b}
+.source-card a{display:inline-flex;min-height:44px;align-items:center;gap:.35rem;color:#6f35a5;font-size:.8rem;font-weight:800}
+.revision-section{background:#efffc3}
+.revision-section ul{margin:0;padding:0;list-style:none;border-top:1px solid #afc568}
+.revision-section li{padding:1rem 0;border-bottom:1px solid #afc568}
+@media(max-width:900px){
+  .methodology-header nav{display:none}
+  .methodology-band,.revision-section{grid-template-columns:1fr}
+  .methodology-heading{align-items:start;flex-direction:column}
+  .source-matrix-head{position:absolute!important;width:1px;height:1px;padding:0!important;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0!important}
+  .source-matrix>div{grid-template-columns:1fr}
+  .source-matrix>div:not(.source-matrix-head)>[role="cell"]{display:block;padding-left:0}
+  .source-matrix>div:not(.source-matrix-head)>[role="cell"]::before{display:block;margin-bottom:.25rem;color:#a99caf;font-size:.62rem;font-weight:800;letter-spacing:.08em}
+  .source-matrix>div:not(.source-matrix-head)>[role="cell"]:nth-child(1)::before{content:"资料类型"}
+  .source-matrix>div:not(.source-matrix-head)>[role="cell"]:nth-child(2)::before{content:"主要来源"}
+  .source-matrix>div:not(.source-matrix-head)>[role="cell"]:nth-child(3)::before{content:"用于支持"}
+  .source-matrix>div:not(.source-matrix-head)>[role="cell"]:nth-child(4)::before{content:"不用于证明"}
+}
+@media(max-width:640px){
+  .methodology-status{grid-template-columns:1fr}
+  .source-register{grid-template-columns:1fr}
+  .source-subtitle{min-height:0}
+}

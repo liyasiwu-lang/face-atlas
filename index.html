@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Face Atlas：覆盖面部特征、人体身形、美妆产品、通用色号、质地妆效、妆容风格与美甲的互动式科普图鉴。">
+  <meta name="theme-color" content="#1d0f2c">
+  <title>Face Atlas｜面部、身形与美妆图鉴</title>
+  <link rel="stylesheet" href="./styles.css?v=2.7">
+</head>
+<body>
+  <a class="skip-link" href="#explore">跳到标签图鉴</a>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Face Atlas 首页">
+      <span class="brand-mark">FA</span>
+      <span><b>FACE ATLAS</b><small>面部、身形与美妆图鉴</small></span>
+    </a>
+    <nav aria-label="主导航">
+      <a href="./beauty.html">美妆图鉴</a>
+      <a href="./body.html">身形图鉴</a>
+      <a href="./recognize.html">识图实验室</a>
+      <a href="./create.html">Prompt 工作台</a>
+      <a href="#explore">探索标签</a>
+      <a href="#compare">易混对照</a>
+      <a href="#method">判断方法</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">BEAUTY × FEATURES × KNOWLEDGE</p>
+        <h1 id="hero-title">读懂一张脸，<br><em>从准确描述开始。</em></h1>
+        <p class="lede">把“杏仁眼、桃花眼、柳叶眉”拆解成可观察、可比较的特征。这里不规定什么更美，只帮你把五官说清楚。</p>
+        <div class="stats" aria-label="资料库规模">
+          <div><strong id="tag-total">823</strong><span>特征标签</span></div>
+          <div><strong>66</strong><span>独立维度</span></div>
+          <div><strong>11</strong><span>面部区域</span></div>
+        </div>
+      </div>
+      <figure class="hero-image">
+        <img src="./assets/face-atlas-hero.jpg" width="1586" height="992" fetchpriority="high" decoding="async" alt="三位具有不同面部特征与肤质的成年女性肖像">
+        <figcaption>不同，不等于偏离标准。每张脸都是特征的独特组合。</figcaption>
+      </figure>
+    </section>
+
+    <section class="explorer" id="explore" aria-labelledby="explore-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">INTERACTIVE ATLAS</p>
+          <h2 id="explore-title">探索全部标签</h2>
+        </div>
+        <p>搜索名称、别名、英文名或判定关键词。点击卡片查看完整解释与图例。</p>
+      </div>
+
+      <div class="search-panel">
+        <label class="search-box" for="search-input">
+          <span aria-hidden="true">⌕</span>
+          <input id="search-input" type="search" placeholder="试试搜索：桃花眼、鼻翼外扩、冷橄榄……" autocomplete="off">
+          <kbd>⌘ K</kbd>
+        </label>
+        <div class="filters" aria-label="标签筛选">
+          <div class="filter-row">
+            <span class="filter-label">面部区域</span>
+            <div id="part-filters" class="chip-group"></div>
+          </div>
+          <div class="filter-row compact-row">
+            <span class="filter-label">标签性质</span>
+            <div id="type-filters" class="chip-group"></div>
+            <button id="reset-button" class="reset-button" type="button">清除筛选</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-bar" aria-live="polite">
+        <p><strong id="result-count">0</strong> 个匹配标签 <span class="example-progress"><b id="face-example-count">0</b> 个研究校准图例</span></p>
+        <label>排序
+          <select id="sort-select">
+            <option value="default">按资料库顺序</option>
+            <option value="name">按名称</option>
+            <option value="dimension">按维度</option>
+          </select>
+        </label>
+      </div>
+      <div id="tag-grid" class="tag-grid"></div>
+      <div id="empty-state" class="empty-state" hidden role="status">
+        <span>没有找到对应标签</span>
+        <p>换一个名称、别名，或减少筛选条件再试试。</p>
+        <p class="empty-hint"><kbd>Esc</kbd> 清除搜索词</p>
+      </div>
+      <button id="load-more" class="load-more" type="button">显示更多标签</button>
+    </section>
+
+    <section class="compare-section" id="compare" aria-labelledby="compare-title">
+      <div class="section-heading light">
+        <div>
+          <p class="section-kicker">COMMON CONFUSIONS</p>
+          <h2 id="compare-title">看起来很像，判断点却不同</h2>
+        </div>
+        <p>选择一组常见易混标签，先看核心区别，再看最快判断方法。</p>
+      </div>
+      <div id="compare-filters" class="compare-filters" aria-label="易混矩阵分类"></div>
+      <div class="compare-layout">
+        <div id="compare-list" class="compare-list" role="tablist" aria-label="易混标签组"></div>
+        <article id="compare-detail" class="compare-detail" role="tabpanel" aria-live="polite"></article>
+      </div>
+    </section>
+
+    <section class="method-section" id="method" aria-labelledby="method-title">
+      <div class="method-intro">
+        <p class="section-kicker">HOW TO READ A FACE</p>
+        <h2 id="method-title">判断面部特征的三个原则</h2>
+        <p>一张照片会被角度、光线、表情和妆容改变。可靠的判断不是“第一眼像什么”，而是把复杂印象拆回可观察的维度。</p>
+      </div>
+      <div class="principles">
+        <article>
+          <span class="number">01</span>
+          <h3>先客观，后俗称</h3>
+          <p>先记录长宽、角度、位置和容量，再补充“桃花眼、狐狸眼”等风格名称。</p>
+          <b>例：杏仁眼 ＋ 轻微上挑 ＋ 内双</b>
+        </article>
+        <article>
+          <span class="number">02</span>
+          <h3>结构与状态分开</h3>
+          <p>骨骼、软组织、颜色和短期状态不是同一回事，肿眼泡也不等于凸眼。</p>
+          <b>例：高颧骨 ＋ 面颊饱满</b>
+        </article>
+        <article>
+          <span class="number">03</span>
+          <h3>允许特征共存</h3>
+          <p>同维度通常选一个，不同维度可以叠加。真实面孔很少只属于一个模板。</p>
+          <b>例：长脸 ＋ 圆润轮廓 ＋ 高颧骨</b>
+        </article>
+      </div>
+    </section>
+
+    <section class="application-section" aria-labelledby="application-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">MAKEUP NOTES</p>
+          <h2 id="application-title">从特征到妆容，不套模板</h2>
+        </div>
+        <p>选择一个区域，查看它在实际妆容中的使用方式与常见误区。</p>
+      </div>
+      <div id="application-tabs" class="application-tabs" role="tablist"></div>
+      <article id="application-detail" class="application-detail" role="tabpanel"></article>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>FACE ATLAS</b><span>面部特征图鉴 · v1.6</span></div>
+    <p>本网站只提供描述性科普，不用于推断美丑、性格、族裔、性别、年龄或医学情况。民间美妆标签没有统一行业边界，实际判断应结合多角度、统一光线与本人偏好。</p>
+    <div class="footer-links"><a href="./methodology.html">资料来源与方法论</a><a href="#top">返回顶部 ↑</a></div>
+  </footer>
+
+  <dialog id="tag-dialog" class="tag-dialog" aria-labelledby="dialog-title">
+    <button class="dialog-close" type="button" aria-label="关闭">×</button>
+    <div id="dialog-content"><h2 id="dialog-title"></h2></div>
+  </dialog>
+
+  <script src="./data.js?v=5.6"></script>
+  <script src="./examples-data.js?v=1.26"></script>
+  <script src="./sources-data.js?v=1.12"></script>
+  <script src="./app.js?v=3.14"></script>
+</body>
+</html>
