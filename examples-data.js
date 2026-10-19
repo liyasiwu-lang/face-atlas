@@ -1,5 +1,5 @@
 (() => {
-  const ASSET_VERSION = '20261019a';
+  const ASSET_VERSION = '20261019b';
   const sheet = (file, col, row, alt) => ({
     file: `./assets/examples/${file}?v=${ASSET_VERSION}`,
     x: ['0%', '33.333%', '66.667%', '100%'][col],
