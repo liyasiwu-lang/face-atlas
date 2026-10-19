@@ -41,11 +41,11 @@
     '手臂相对较长','手臂相对较短','前臂相对较长','上臂相对较长',
     '大腿量感相对较强','小腿量感相对较强','四肢线条纤细','四肢线条饱满'
   ]);
-  addSheet('body-reference-05-grid.jpg', [
+  addSheet('body-reference-05-grid.webp', [
     '长颈','短颈','均衡颈长',
     '踝部相对较细','中等踝围','踝部相对较粗'
   ]);
-  addSheet('body-reference-06-grid.jpg', [
+  addSheet('body-reference-06-grid.webp', [
     '头大身小','头身比例均衡','头小身长','手指偏长',
     '手指长度均衡','手指偏短','手掌偏宽','手掌宽度均衡',
     '手掌偏窄','足部偏长','足长均衡','足部偏短'
@@ -54,12 +54,12 @@
     ['肩斜角较大',0],['肩斜角适中',1],['肩斜角较小',2],
     ['腰臀比偏大',4],['腰臀比适中',5],['腰臀比偏小',6],
     ['腰段偏长',8],['腰段适中',9],['腰段偏短',10]
-  ].forEach(([name,index]) => body[name] = sheet('body-reference-07-grid.jpg', index, `${name}的身形比例参考图例`));
+  ].forEach(([name,index]) => body[name] = sheet('body-reference-07-grid.webp', index, `${name}的身形比例参考图例`));
   [
     ['手腕相对较细',0],['中等腕围',1],['手腕相对较粗',2],
     ['小腿肚位置偏高',4],['小腿肚位置适中',5],['小腿肚位置偏低',6],
     ['前掌相对较宽',8],['前掌宽度适中',9],['前掌相对较窄',10]
-  ].forEach(([name,index]) => body[name] = sheet('body-reference-08-grid.jpg', index, `${name}的身形比例参考图例`));
+  ].forEach(([name,index]) => body[name] = sheet('body-reference-08-grid.webp', index, `${name}的身形比例参考图例`));
   addGuides({
     '自然肩线': 'shoulder-neutral',
     '中位腰线': 'waist-mid',
