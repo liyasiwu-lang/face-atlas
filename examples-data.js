@@ -1,5 +1,5 @@
 (() => {
-  const ASSET_VERSION = '20261019b';
+  const ASSET_VERSION = '20261019c';
   const sheet = (file, col, row, alt) => ({
     file: `./assets/examples/${file}?v=${ASSET_VERSION}`,
     x: ['0%', '33.333%', '66.667%', '100%'][col],
@@ -651,7 +651,7 @@
     '定妆喷雾','矿物定妆粉','腮红凝胶','暖调修容粉',
     '水光高光液','彩色眼线胶笔','唇部磨砂膏'
   ]);
-  addProductSheet('product-reference-11-grid.jpg', [
+  addProductSheet('product-reference-11-grid.webp', [
     '腮红喷雾','古铜喷雾','高光喷雾','眼线马克笔',
     '唇部防晒棒','温变甲油胶','眉毛雨衣','营养底油',
     '定妆膏','妆前棒','校色隔离霜','舞台粉底膏'
@@ -859,27 +859,27 @@
     '男团少年妆','油画复古妆','巴洛克宫廷妆','见家长妆',
     '下午茶妆','全包眼线妆','开眼角眼妆','焦糖烤奶妆'
   ]);
-  addProductSheet('product-reference-12-grid.jpg', [
+  addProductSheet('product-reference-12-grid.webp', [
     '腮红液','修容笔','高光粉饼','卧蚕笔',
     '遮瑕蜜','妆前膏','定妆蜜粉','睫毛雨衣',
     '眉胶','唇部精华','闪粉胶','美甲清洁剂'
   ]);
-  addProductSheet('product-reference-13-grid.jpg', [
+  addProductSheet('product-reference-13-grid.webp', [
     '果冻粉底','刀锋眼线膏','腮红霜','古铜凝胶',
     '高光粉','眼影液','唇纹填充膏','光泽妆前乳',
     '遮瑕校色盘','水散粉','发际线粉','珠光身体乳'
   ]);
-  addProductSheet('product-reference-14-grid.jpg', [
+  addProductSheet('product-reference-14-grid.webp', [
     '水粉底','气垫眉粉','修容霜','高光啫喱',
     '眼线墨笔','眼影膏笔','唇部雨衣','防晒妆前凝露',
     '双色修容盘','柔光散粉','眉笔胶','身体彩绘膏'
   ]);
-  addProductSheet('product-reference-15-grid.jpg', [
+  addProductSheet('product-reference-15-grid.webp', [
     '水粉霜','气垫遮瑕','毛孔妆前','卧蚕液',
     '唇线胶笔','定妆喷雾棒','腮红粉饼','纤维睫毛膏',
     '戏剧油彩','甲面干燥剂','光变甲油胶','砂糖胶'
   ]);
-  addProductSheet('product-reference-16-grid.jpg', [
+  addProductSheet('product-reference-16-grid.webp', [
     '有色面霜','修容粉饼','高光球','卧蚕阴影笔',
     '局部定妆液','唇膜贴','指缘软化剂','美甲转印胶',
     '碎钻粉','假睫毛卸除液','油彩定妆喷雾','爆裂甲油'
