@@ -1,5 +1,5 @@
 (() => {
-  const ASSET_VERSION = '20261020a';
+  const ASSET_VERSION = '20261020b';
   const sheet = (file, col, row, alt) => ({
     file: `./assets/examples/${file}?v=${ASSET_VERSION}`,
     x: ['0%', '33.333%', '66.667%', '100%'][col],
@@ -836,14 +836,14 @@
     '暗黑浪漫妆',null,'阿拉伯眼妆','印度新娘妆'
   ]);
   addStyleSheet('style-reference-07-grid.jpg', [
-    '学生淡妆','雾面陶瓷肌','约会柔光妆','商务晚宴妆',
+    null,'雾面陶瓷肌','约会柔光妆',null,
     '二十年代摩登妆','维多利亚复古妆','赤陶妆容','雾霾紫妆容',
-    '柔光奶油肌','伪素颜妆','男士自然妆',null
+    null,null,'男士自然妆',null
   ]);
   addStyleSheet('style-reference-08-grid.jpg', [
     '妈妈好气色妆','运动防晒妆','玻璃唇水光妆','婚礼伴娘妆',
     null,'泰式浓颜妆','法式慵懒妆','韩系水光妆',
-    '六十年代摩登妆','洛可可宫廷妆','舞台演出妆','印度浓颜妆'
+    '六十年代摩登妆',null,null,'印度浓颜妆'
   ]);
   addStyleSheet('style-reference-09-grid.jpg', [
     '精油光泽妆',null,'欧式骨相妆','日系宿醉妆',
