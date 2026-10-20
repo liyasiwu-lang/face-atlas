@@ -567,7 +567,6 @@ function makeupStyleCandidates(profile, lips, quality) {
   const [h,s] = rgbToHsl(...profile.rgb);
 
   if (lipGloss) {
-    add('水光妆', quality-5, '唇部有连续高光，面部同时保留通透亮泽，优先匹配水光妆。');
     add('韩系清透妆', quality-9, '纤长睫毛、柔和腮红与水光唇的组合接近韩系清透妆。');
     add('玻璃肌妆容', quality-(profile.highlightRatio>.11 ? 8 : 17), '面中亮泽和镜面唇共同形成通透反光，候选接近玻璃肌妆容。');
     add('日系透明感妆', quality-16, '通透底妆与亮泽唇也可能对应日系透明感妆，作为延伸候选。');
@@ -584,7 +583,6 @@ function makeupAppearanceCandidates(profile,quality) {
   const candidates=[];
   const add=(name,score,evidence)=>candidates.push(tag(name,Math.min(55,score),evidence,'styles'));
   const [h,s]=rgbToHsl(...profile.rgb);
-  if (profile.highlightRatio>.1 && profile.contrast>.11) add('水光妆',quality-28,'主体区域存在较明显亮泽，水光妆仅作为低置信度整体候选。');
   if (s<.36) add('清透裸妆',quality-30,'整体色彩柔和、饱和度较低，候选接近清透裸妆。');
   if ((h<40||h>345) && s>.18) add('桃色妆容',quality-32,'主体代表色位于暖粉至蜜桃区间，桃色妆容作为相关候选。');
   if (profile.darkRatio>.27 && profile.contrast>.2) add('小烟熏',quality-30,'主体包含较集中的深色高对比区域，小烟熏作为相关候选。');
