@@ -1,5 +1,5 @@
 (() => {
-  const ASSET_VERSION = '20261020e';
+  const ASSET_VERSION = '20261020f';
   const sheet = (file, col, row, alt) => ({
     file: `./assets/examples/${file}?v=${ASSET_VERSION}`,
     x: ['0%', '33.333%', '66.667%', '100%'][col],
@@ -816,14 +816,9 @@
     '八十年代浓彩妆','九十年代棕调妆',null,'派对闪耀妆'
   ]);
   addStyleSheet('style-reference-03-grid.webp', [
-    '舞台妆','节庆妆','经典法式甲','反法式甲',
-    '渐变法式甲','腮红甲','光晕甲','猫眼甲',
-    '镜面甲','极光甲','大理石纹甲','玳瑁甲'
-  ]);
-  addStyleSheet('style-reference-04-grid.webp', [
-    '水波纹甲','3D浮雕甲','编织纹甲','果冻糖浆甲','甜酷暗黑甲',
-    null,'度假沙滩妆','三十年代优雅妆','千禧年怀旧妆',
-    '雾霾蓝妆容',null,null
+    '舞台妆','节庆妆','度假沙滩妆','三十年代优雅妆',
+    '千禧年怀旧妆','雾霾蓝妆容',null,null,
+    null,null,null,null
   ]);
   addStyleSheet('style-reference-05-grid.webp', [
     '低对比妆容','高对比妆容','柔缎光妆容','日晒古铜妆',
@@ -964,7 +959,8 @@
   ]);
   addNailSheet('nail-reference-12-grid.webp', [
     '像素甲','拼布甲','徽章甲','糖霜甲',
-    '虎眼石甲','孔雀石甲','木纹甲','报纸甲'
+    '虎眼石甲','孔雀石甲','木纹甲','报纸甲',
+    '水波纹甲','甜酷暗黑甲'
   ]);
 
   // Reuse calibrated visuals for canonical names introduced by terminology normalization.
