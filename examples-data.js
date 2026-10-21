@@ -1,5 +1,5 @@
 (() => {
-  const ASSET_VERSION = '20261020c';
+  const ASSET_VERSION = '20261020d';
   const sheet = (file, col, row, alt) => ({
     file: `./assets/examples/${file}?v=${ASSET_VERSION}`,
     x: ['0%', '33.333%', '66.667%', '100%'][col],
@@ -736,7 +736,7 @@
     ['镜面粉',2,1,'镜面反射甲面示意'],['星芒',3,1,'放射星芒甲面示意'],
     ['凝露',0,2,'半流动凝露质地示意'],['膜状',1,2,'可剥离薄膜质地示意'],
     ['膏转粉',2,2,'膏体转粉体妆效示意'],['干湿两用',3,2,'干粉与湿用对比示意']
-  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-7-grid.jpg',col,row,alt));
+  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-7-grid.webp',col,row,alt));
 
   [
     ['完全遮盖',0,0,'不透明完全遮盖色膜示意'],['保湿',1,0,'保湿水滴肤感示意'],
@@ -745,7 +745,7 @@
     ['贝壳光',2,1,'贝壳极光膜示意'],['玻璃甲',3,1,'高透玻璃珠甲面示意'],
     ['防晕染',0,2,'清晰线条与糊染对比示意'],['显色',1,2,'单次涂抹高显色对比示意'],
     ['凉感',2,2,'清凉雪花肤感示意'],['隐形毛孔',3,2,'毛孔柔焦前后对比示意']
-  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-8-grid.jpg',col,row,alt));
+  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-8-grid.webp',col,row,alt));
 
   [
     ['水油双相',0,0,'水油分层质地示意'],['颗粒磨砂',1,0,'悬浮磨砂颗粒质地示意'],
@@ -754,7 +754,7 @@
     ['水波纹',2,1,'明暗流动水波纹示意'],['石膏胶',3,1,'粗糙立体石膏纹理示意'],
     ['油包水',0,2,'油相包裹水珠质地示意'],['不氧化',1,2,'暗沉与持色两侧对比示意'],
     ['无粉感',2,2,'无颗粒融合妆面示意'],['不粘腻',3,2,'成膜干爽不粘发丝示意']
-  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-9-grid.jpg',col,row,alt));
+  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-9-grid.webp',col,row,alt));
 
   [
     ['易推匀',0,0,'顺滑渐变无边界涂抹示意'],['金箔',1,0,'不规则金属箔片示意'],
@@ -763,7 +763,7 @@
     ['油画',2,1,'厚涂笔触立体肌理示意'],['抗黄封层',3,1,'防紫外发黄透明封层示意'],
     ['不搓泥',0,2,'成膜无碎屑对比示意'],['不假面',1,2,'边缘自然融合不假面示意'],
     ['冰沙状',2,2,'松软冰沙颗粒质地示意'],['奶昔状',3,2,'绵密奶昔流动质地示意']
-  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-10-grid.jpg',col,row,alt));
+  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-10-grid.webp',col,row,alt));
 
   [
     ['免洗封层',0,0,'无浮胶光亮封层示意'],['可撕拉',1,0,'整片撕除水性膜示意'],
@@ -772,14 +772,14 @@
     ['哑光封层',2,1,'丝绒哑光甲面示意'],['防刮封层',3,1,'盾形防刮标识示意'],
     ['硬式封层',0,2,'高硬度厚边封层示意'],['软糖',1,2,'Q弹软糖水润甲面示意'],
     ['水晶糖',2,2,'晶体颗粒凹凸示意'],['绸缎',3,2,'丝绸柔光甲面示意']
-  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-11-grid.jpg',col,row,alt));
+  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-11-grid.webp',col,row,alt));
 
   [
     ['可叠涂',0,0,'三层逐步加深示意'],['湿粉状',1,0,'湿粉转润泽膜示意'],
     ['粉状成膜',2,0,'粉体铺展成膜示意'],['服帖',3,0,'贴合皮肤纹理示意'],
     ['猫眼镜面粉',0,1,'磁引带状高光示意'],['全息碎钻粉',1,1,'彩虹折射碎钻示意'],
     ['蛇纹胶',2,1,'蛇鳞片纹理示意'],['变色龙',3,1,'分角度换色示意']
-  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-12-grid.jpg',col,row,alt));
+  ].forEach(([name,col,row,alt]) => finish[name] = sheet('finish-reference-12-grid.webp',col,row,alt));
 
   const style = {};
   [
