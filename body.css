@@ -70,7 +70,7 @@
 .body-card:before{content:"";height:4px;background:var(--body-accent);position:absolute;left:0;right:0;top:0;z-index:1}
 .body-card:hover,.body-card:focus-visible{transform:translateY(-3px);box-shadow:0 16px 32px rgba(34,18,47,.1);border-color:#b9a9c2;outline:0}.body-card:focus-visible{outline:3px solid var(--violet);outline-offset:2px}
 .body-example{margin:0 -1rem 1rem;background:#ece7ee;aspect-ratio:1;overflow:hidden}
-.body-example-sprite{width:100%;height:100%;background-image:var(--sheet);background-size:var(--size,400% 300%);background-position:var(--x) var(--y);background-repeat:no-repeat;position:relative;overflow:hidden}
+.body-example-sprite{width:100%;height:100%;background-image:none;background-size:var(--size,400% 300%);background-position:var(--x) var(--y);background-repeat:no-repeat;position:relative;overflow:hidden}.body-example-sprite.loaded{background-image:var(--sheet)}
 .body-example-guide,.body-example-guide>*{position:absolute;display:block;box-sizing:border-box;pointer-events:none}
 .body-example-guide{inset:0;--guide:#d94b6b;--guide-alt:#00a6aa;filter:drop-shadow(0 1px 1px rgba(255,255,255,.75))}
 .body-example-guide i,.body-example-guide b,.body-example-guide em{margin:0;padding:0;font:inherit}

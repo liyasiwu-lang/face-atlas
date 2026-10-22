@@ -19,8 +19,8 @@
   <meta name="twitter:title" content="Body Atlas｜人体身形与比例图鉴">
   <meta name="twitter:description" content="以肩、腰、髋、躯干和四肢的相对比例，建立中性、可观察的人体身形科普图鉴。">
   <meta name="twitter:image" content="https://liyasiwu-lang.github.io/face-atlas/assets/og-cover.webp">
-  <link rel="stylesheet" href="./styles.css?v=2.8">
-  <link rel="stylesheet" href="./body.css?v=1.12">
+  <link rel="stylesheet" href="./styles.css?v=2.9">
+  <link rel="stylesheet" href="./body.css?v=1.13">
 </head>
 <body class="body-page">
   <a class="skip-link" href="#body-explorer">跳到身形图鉴</a>
@@ -222,5 +222,34 @@
   <script src="./body-examples.js?v=1.8"></script>
   <script src="./sources-data.js?v=1.12"></script>
   <script src="./body.js?v=1.16"></script>
+  <script>
+  (function(){
+    if(!('IntersectionObserver' in window)){
+      document.querySelectorAll('.example-sprite,.body-example-sprite,.result-thumb').forEach(el=>el.classList.add('loaded'));
+      return;
+    }
+    const loaded = new WeakSet();
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting && !loaded.has(e.target)){
+          loaded.add(e.target);
+          e.target.classList.add('loaded');
+          io.unobserve(e.target);
+        }
+      });
+    }, {rootMargin:'300px'});
+    const sel = '.example-sprite,.body-example-sprite,.result-thumb,.comparison-reference';
+    function scan(root){
+      (root||document).querySelectorAll(sel).forEach(el=>{
+        if(!loaded.has(el)) io.observe(el);
+      });
+    }
+    scan();
+    const mo = new MutationObserver(muts=>{
+      muts.forEach(m=>{ m.addedNodes.forEach(n=>{ if(n.nodeType===1) scan(n); }); });
+    });
+    mo.observe(document.body, {childList:true, subtree:true});
+  })();
+  </script>
 </body>
 </html>
