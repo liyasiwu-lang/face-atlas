@@ -20,6 +20,7 @@
   <meta name="twitter:description" content="覆盖面部特征、人体身形、美妆产品、通用色号、质地妆效、妆容风格与美甲的互动式科普图鉴。">
   <meta name="twitter:image" content="https://liyasiwu-lang.github.io/face-atlas/assets/og-cover.webp">
   <link rel="stylesheet" href="./styles.css?v=2.9">
+  <link rel="stylesheet" href="./styles-memphis.css?v=0.2">
 </head>
 <body>
   <a class="skip-link" href="#explore">跳到标签图鉴</a>
@@ -41,6 +42,14 @@
 
   <main id="top">
     <section class="hero" aria-labelledby="hero-title">
+      <div class="memphis-decor" aria-hidden="true">
+        <span class="md-circle"></span>
+        <span class="md-square"></span>
+        <span class="md-ring"></span>
+        <span class="md-zig"><svg viewBox="0 0 70 24" fill="none"><polyline points="0,20 12,4 24,20 36,4 48,20 60,4" stroke="#17131b" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="md-dots"></span>
+        <span class="md-tri"></span>
+      </div>
       <div class="hero-copy">
         <p class="eyebrow">BEAUTY × FEATURES × KNOWLEDGE</p>
         <h1 id="hero-title">读懂一张脸，<br><em>从准确描述开始。</em></h1>
@@ -59,10 +68,17 @@
         </div>
       </div>
       <figure class="hero-image">
-        <img src="./assets/face-atlas-hero.jpg" width="1586" height="992" fetchpriority="high" decoding="async" alt="三位具有不同面部特征与肤质的成年女性肖像">
+        <img src="./assets/face-atlas-hero-memphis.webp" width="1600" height="1200" fetchpriority="high" decoding="async" alt="三位不同族裔、精致妆容的美丽女性并排而立，表情各异：温柔微笑、自信抬颌、好奇侧目">
         <figcaption>不同，不等于偏离标准。每张脸都是特征的独特组合。</figcaption>
       </figure>
     </section>
+
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <span>脸型 <span class="sep">✦</span></span><span>眼型 <span class="sep">✦</span></span><span>眉形 <span class="sep">✦</span></span><span>鼻型 <span class="sep">✦</span></span><span>唇形 <span class="sep">✦</span></span><span>肤色 <span class="sep">✦</span></span><span>质地 <span class="sep">✦</span></span><span>色号 <span class="sep">✦</span></span><span>妆容风格 <span class="sep">✦</span></span><span>美甲 <span class="sep">✦</span></span>
+        <span>脸型 <span class="sep">✦</span></span><span>眼型 <span class="sep">✦</span></span><span>眉形 <span class="sep">✦</span></span><span>鼻型 <span class="sep">✦</span></span><span>唇形 <span class="sep">✦</span></span><span>肤色 <span class="sep">✦</span></span><span>质地 <span class="sep">✦</span></span><span>色号 <span class="sep">✦</span></span><span>妆容风格 <span class="sep">✦</span></span><span>美甲 <span class="sep">✦</span></span>
+      </div>
+    </div>
 
     <section class="explorer" id="explore" aria-labelledby="explore-title">
       <div class="section-heading">
@@ -211,5 +227,6 @@
     mo.observe(document.body, {childList:true, subtree:true});
   })();
   </script>
+  <script src="./memphis-interactions.js?v=0.2"></script>
 </body>
 </html>
