@@ -21,7 +21,7 @@
     };
   });
 
-  addSheet('body-reference-01-v2-grid.webp', [
+  addSheet('body-reference-01-v3-grid.webp', [
     'H形轮廓','A形轮廓','V形轮廓','X形轮廓',
     'O形轮廓','I形轮廓','8形轮廓','柔和X形轮廓',
     '肩宽于髋','肩髋等宽','肩窄于髋','平直肩线'
