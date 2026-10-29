@@ -99,6 +99,18 @@
   }
 
   function exampleVisual(item, large=false){
+    if(mode==='comparisons'){
+      const group=item.group==='妆效对照'?'finishes':'nails';
+      const sides=item.pair.split(/\s+vs\s+/i).map(name=>{
+        const entry=(DATA[group]||[]).find(candidate=>candidate.name===name);
+        const ex=(EXAMPLES_BY_ID[group]||{})[entry?.id]||(EXAMPLES[group]||{})[name];
+        const image=ex
+          ? `<div class="example-sprite${large?' loaded':''}" role="img" aria-label="${esc(ex.alt)}" style="--sheet:url('${esc(ex.file)}');--x:${ex.x};--y:${ex.y}"></div>`
+          : `<div class="comparison-image-missing">暂无图例</div>`;
+        return `<figure class="example-figure comparison-side">${image}<figcaption>${esc(name)}</figcaption></figure>`;
+      }).join('');
+      return `<div class="comparison-examples${large?' large':''}"><div class="comparison-images">${sides}</div>${large?'<p class="comparison-note">现有独立图例并排参考 · AI 辅助示意，拍摄条件可能不同；请结合下方辨析要点。</p>':''}</div>`;
+    }
     if(mode==='brands') return `<div class="brand-visual${large?' large':''}" aria-label="${esc(item.brand)}品牌资料"><span>${esc(item.id.split('-')[1])}</span><b>${esc(item.brand)}</b><small>${esc(item.origin)} · ${esc(item.tier)}</small></div>`;
     if(mode==='brandProducts'){
       const image=PRODUCT_IMAGES[item.id];
@@ -199,7 +211,7 @@
   }
   function card(item){
     if(mode==='comparisons'){
-      return `<button class="beauty-card comparison-card" type="button" data-id="${esc(item.pair)}"><span class="card-top"><span>${esc(item.group)}</span><span>对照</span></span><h3>${esc(item.pair)}</h3><p>${esc(item.difference)}</p><span class="arrow">↗</span></button>`;
+      return `<button class="beauty-card comparison-card" type="button" data-id="${esc(item.pair)}"><span class="card-top"><span>${esc(item.group)}</span><span>对照</span></span>${exampleVisual(item)}<h3>${esc(item.pair)}</h3><p>${esc(item.difference)}</p><span class="arrow">↗</span></button>`;
     }
     const top = mode==='brands'?[item.origin,item.tier]:mode==='brandProducts'?[item.categoryName,item.brandLocalName]:mode==='products'?[item.area,item.category]:mode==='shades'?[item.kind,item.family]:mode==='finishes'?[item.dimension,'术语']:mode==='styles'?[item.family,'风格']: [item.dimension,item.length==='—'?'美甲':item.length];
     const colorClass='';
