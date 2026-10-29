@@ -397,7 +397,7 @@
   addFaceSheet('eyelid-volume-5-grid.webp', [
     '凸眼',null,'薄上眼皮','适中上睑',
     '饱满上眼皮','轻度肿眼泡','明显肿眼泡','上睑凹陷',
-    '多重上睑褶','上睑松弛','断续双眼皮',null
+    '多重上睑褶','上睑松弛',null,null
   ], '的上睑结构参考图例');
 
   addFaceSheet('eye-spacing-5-grid.webp', [
@@ -493,7 +493,7 @@
 
   addFaceSheet('eye-types-3-v2-grid.webp', [
     null,'眯缝眼',null,'铜铃眼',
-    '荔枝眼','睡凤眼','断续双眼皮',null
+    '荔枝眼','睡凤眼',null,null
   ], '的眼型与眼皮结构参考图例');
 
   addFaceSheet('nose-types-4-v2-grid.webp', [

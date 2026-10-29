@@ -991,9 +991,11 @@ def audit_comparison_coverage(audit: Audit, face: dict[str, Any], beauty: dict[s
     )
 
     confusion_count = len(face.get("confusions", []))
+    # One pair was intentionally removed with the retired interrupted-crease tag.
+    minimum_confusions = 374
     audit.require(
-        confusion_count >= 375,
-        f"face.confusions: count {confusion_count} regressed below baseline 375",
+        confusion_count >= minimum_confusions,
+        f"face.confusions: count {confusion_count} regressed below baseline {minimum_confusions}",
     )
 
     beauty_names = {r["name"] for r in beauty.get("finishes", [])} | {r["name"] for r in beauty.get("nails", [])}
@@ -1028,7 +1030,7 @@ def audit_comparison_coverage(audit: Audit, face: dict[str, Any], beauty: dict[s
         "beauty.comparisons: disambiguation groups not fully covered: " + ", ".join(beauty_missing[:15]),
     )
 
-    if not missing and not bad_endpoints and not beauty_missing and confusion_count >= 375:
+    if not missing and not bad_endpoints and not beauty_missing and confusion_count >= minimum_confusions:
         audit.passed(
             f"comparison coverage: {len(categorical)} face categorical tags covered, "
             f"{confusion_count} face confusions, {len(beauty_comparisons)} beauty comparisons "
