@@ -933,7 +933,8 @@
     '裸甲建构','反法式','渐变法式','V形法式',
     '侧法式','双拼甲','框边甲','棋盘格甲'
   ]);
-  // This sheet places the reverse French design at the start of its second row.
+  // Use the nude gel surface example for structured nude nails; the second row starts with reverse French.
+  nail['裸甲建构'] = sheet('nail-reference-6-grid.webp', 2, 0, '自然裸粉色、平滑光泽甲面与柔和弧度的裸甲建构示意');
   nail['反法式'] = sheet('nail-reference-6-grid.webp', 0, 1, '甲根处白色弧形色块、甲尖保持裸粉色的反法式美甲示意');
   addNailSheet('nail-reference-7-grid.webp', [
     '波点甲','火焰甲','星月甲','腮红甲',
