@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d7ff69">
+  <meta name="description" content="Face Atlas 地域图鉴：26 个背景入口、52 张 AI 男女个体图例，附科普定义、可见特征与中文 Prompt。">
+  <link rel="canonical" href="https://liyasiwu-lang.github.io/face-atlas/population.html">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="地域图鉴 · Face Atlas">
+  <meta property="og:description" content="26 个背景入口，52 张男女图例，用具体结构认识面容差异。">
+  <meta property="og:url" content="https://liyasiwu-lang.github.io/face-atlas/population.html">
+  <meta property="og:image" content="https://liyasiwu-lang.github.io/face-atlas/assets/og-cover.webp">
+  <title>地域图鉴 · Face Atlas</title>
+  <link rel="stylesheet" href="population.css">
+  <script src="population-info.js" defer></script>
+  <script src="population-data.js" defer></script>
+  <script src="population.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#explore">跳到图例</a>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="Face Atlas 首页"><span class="brand-mark">FA</span><span><b>FACE ATLAS</b><small>把看见的，描述清楚。</small></span></a>
+    <nav aria-label="图鉴导航"><a href="./index.html">面部特征</a><a class="active" href="./population.html" aria-current="page">地域图鉴</a><a href="./beauty.html">美妆图鉴</a><a href="./body.html">身形图鉴</a><a href="./recognize.html">识图实验室</a><a href="./create.html">Prompt 工作台</a><a href="./methodology.html">资料来源</a></nav>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">FACE ATLAS / HUMAN VARIATION</p>
+        <h1>面容的不同，<br><em>值得细看。</em></h1>
+        <p class="lede">从眼睑到鼻翼，从唇形到轮廓。<br>用具体结构，认识面容中的丰富差异。</p>
+        <a class="button primary" href="#explore">翻开面容图鉴 <span aria-hidden="true">↗</span></a>
+        <div class="hero-stats"><span><strong>26</strong>背景入口</span><span><strong>52</strong>男女图例</span><span><strong>4</strong>观察视角</span></div>
+      </div>
+      <div class="portrait-collage" aria-label="中国、日本、韩国女性图例">
+        <span class="decor circle" aria-hidden="true"></span><span class="decor ring" aria-hidden="true"></span><span class="decor zig" aria-hidden="true">〰</span>
+        <figure class="hero-photo photo-one"><img src="assets/population/rg-01-female-framed.webp" width="840" height="840" alt="中国背景的 AI 女性个体图例"><figcaption>01 / 中国</figcaption></figure>
+        <figure class="hero-photo photo-two"><img src="assets/population/rg-02-female-framed.webp" width="840" height="840" alt="日本背景的 AI 女性个体图例"><figcaption>02 / 日本</figcaption></figure>
+        <figure class="hero-photo photo-three"><img src="assets/population/rg-03-female-framed.webp" width="840" height="840" alt="韩国背景的 AI 女性个体图例"><figcaption>03 / 韩国</figcaption></figure>
+        <span class="collage-label">每一张脸，都有自己的细节。</span>
+      </div>
+    </section>
+    <div class="scope-note"><span class="note-symbol" aria-hidden="true">i</span><p>图中人物均为 <b>AI 虚构个体</b>，背景名称来自生成设定。用于观察形态，不代表该人群的平均面容，也不能用于判断他人的国籍或族裔。</p></div>
+    <section class="explorer" id="explore">
+      <div class="section-heading"><div><p class="eyebrow">THE PORTRAIT INDEX</p><h2>把差异，看具体。</h2></div><p>欧洲 8 组 · 美洲 5 组。<br>点「细看结构」查看定义与人物 prompt。</p></div>
+      <div class="filter-panel">
+        <label class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg><input id="search" type="search" placeholder="搜索中国、日本、韩国、北欧…" autocomplete="off" aria-label="搜索地域入口"><kbd aria-hidden="true">⌘ K</kbd></label>
+        <div class="filter-row"><span class="filter-label">地域</span><div id="groups" class="chips" role="radiogroup" aria-label="地域筛选"></div></div>
+        <div class="filter-row"><span class="filter-label">图例</span><div id="sex" class="chips" role="radiogroup" aria-label="图例展示"><button type="button" role="radio" data-sex="pair" aria-checked="true">男女配对</button><button type="button" role="radio" data-sex="female" aria-checked="false" tabindex="-1">女性</button><button type="button" role="radio" data-sex="male" aria-checked="false" tabindex="-1">男性</button></div><button type="button" class="reset" id="reset">重置筛选</button></div>
+      </div>
+      <div class="results-line"><p id="count" role="status" aria-live="polite"></p><span>点击肖像放大 · 最多选两组</span></div>
+      <div id="grid" class="portrait-grid"></div>
+      <div class="empty" id="empty" hidden><h3>暂时没有匹配的入口</h3><p>试试更短的关键词，或重置地域筛选。</p><button type="button" class="button" id="empty-reset">显示全部图例</button></div>
+    </section>
+    <section class="guide" id="guide">
+      <div class="section-heading"><div><p class="eyebrow">LOOK CLOSER</p><h2>描述结构，<br>让观察更准确。</h2></div><p>这些问题适用于每一个个体，<br>不是任何地域的固定特征。</p></div>
+      <div class="guide-grid"><article><span>01</span><h3>眼部</h3><p>看上睑褶皱、内眦形态和眼裂走向。区分眼部结构与妆容效果。</p></article><article><span>02</span><h3>鼻部</h3><p>看鼻梁走向、鼻翼宽度与鼻尖形态。鼻根高度需要侧面补充。</p></article><article><span>03</span><h3>唇部</h3><p>看唇峰、上下唇比例与嘴角位置。表情会改变可见形态。</p></article><article><span>04</span><h3>轮廓</h3><p>看颧骨、下颌与面部长宽关系。取景和镜头也会影响观感。</p></article></div>
+    </section>
+  </main>
+  <footer><a class="brand" href="./index.html"><span class="brand-mark">FA</span><b>FACE ATLAS</b></a><p>面容各有细节。知识，需要依据。</p><small><a href="./methodology.html">资料来源与方法论</a> · <a href="#top">返回顶部 ↑</a></small></footer>
+  <aside class="compare-tray" id="tray" hidden aria-label="已选对照"><div><b id="selection-label">已选 0 / 2</b><span id="selection-names"></span></div><button type="button" class="clear-selection" id="clear-selection">清空</button><button type="button" class="button primary" id="compare" disabled>并排观察 ↗</button></aside>
+  <dialog id="viewer" aria-labelledby="viewer-title"><div class="dialog-heading"><div><p class="eyebrow">INDIVIDUAL REFERENCE</p><h2 id="viewer-title"></h2></div><button type="button" class="icon-button" id="close-viewer" aria-label="关闭详情"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m18 6-12 12M6 6l12 12"></path></svg></button></div><div id="viewer-content"></div></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
