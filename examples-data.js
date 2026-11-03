@@ -925,16 +925,16 @@
   ].forEach(([name,col,row,alt]) => nail[name] = sheet('nail-reference-5-grid.webp',col,row,alt));
 
   const addNailSheet = (file, names) => names.forEach((name, index) => {
+    if (!name) return;
     nail[name] = sheet(file, index % 4, Math.floor(index / 4), `${name}的结构与效果参考图例`);
   });
 
   addNailSheet('nail-reference-6-grid.webp', [
     '水晶甲','凝胶延长','建构胶加固','可卸甲片',
-    '裸甲建构','反法式','渐变法式','V形法式',
+    null,'反法式','渐变法式','V形法式',
     '侧法式','双拼甲','框边甲','棋盘格甲'
   ]);
-  // Use the nude gel surface example for structured nude nails; the second row starts with reverse French.
-  nail['裸甲建构'] = sheet('nail-reference-6-grid.webp', 2, 0, '自然裸粉色、平滑光泽甲面与柔和弧度的裸甲建构示意');
+  // Keep the unused grid slot so the remaining examples retain their coordinates.
   nail['反法式'] = sheet('nail-reference-6-grid.webp', 0, 1, '甲根处白色弧形色块、甲尖保持裸粉色的反法式美甲示意');
   addNailSheet('nail-reference-7-grid.webp', [
     '波点甲','火焰甲','星月甲','腮红甲',
