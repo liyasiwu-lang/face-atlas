@@ -150,7 +150,7 @@
         <div class="detail-box full"><span>共存规则</span><p>${escapeHTML(item.coexist)}</p></div>
         <div class="detail-box full"><span>容易混淆</span><p>${escapeHTML(item.confusion)}</p></div>
         <div class="detail-box full"><span>服装与版型应用</span><p>${escapeHTML(item.application)}</p></div>
-        <div class="detail-box full"><span>标签 Prompt</span><p>${escapeHTML(item.prompt)}</p></div>
+        ${window.ATLAS_FEEDBACK?.promptHTML(item.prompt) || `<div class="detail-box full"><span>标签 Prompt</span><p>${escapeHTML(item.prompt)}</p></div>`}
       </div>
       ${provenanceHTML(item)}
       <p class="kbd-hint">键盘：← → 切换上一条/下一条，Esc 关闭</p>

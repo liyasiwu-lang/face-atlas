@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="./create.css?v=2.2">
   <link rel="stylesheet" href="./create-responsive.css">
   <link rel="stylesheet" href="./styles-memphis.css?v=0.2">
+  <link rel="stylesheet" href="./memphis-feedback.css?v=1.0">
 </head>
 <body class="create-page">
   <a class="skip-link" href="#creator">跳到创作工作区</a>
@@ -107,7 +108,7 @@
         </section>
 
         <div class="compiled-block">
-          <div><b id="compiled-prompt-label">编译后的专业 Prompt</b><button id="copy-prompt" type="button">复制</button></div>
+          <div><b id="compiled-prompt-label">编译后的专业 Prompt</b><span class="atlas-copy-actions"><button id="copy-prompt" type="button">复制</button><span class="atlas-copy-stamp" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"></circle><path d="m8 12 3 3 5-6"></path></svg>已复制</span></span></div>
           <textarea id="compiled-prompt" rows="12" readonly aria-labelledby="compiled-prompt-label" aria-readonly="true"></textarea>
         </div>
         <div class="creator-actions"><button id="save-draft" type="button">保存本机草稿</button><button id="generate-image" class="generate-button" type="button" disabled>生成服务待连接</button></div>
@@ -130,7 +131,8 @@
   <script src="./body-data.js?v=1.8.5"></script>
   <script src="./beauty-data.js?v=3.34"></script>
   <script src="./create-config.js"></script>
-  <script src="./create.js?v=3.4"></script>
+  <script src="./memphis-feedback.js?v=1.0"></script>
+  <script src="./create.js?v=3.5"></script>
   <script src="./memphis-interactions.js?v=0.2"></script>
 </body>
 </html>

@@ -1,0 +1,18 @@
+/* Two independent references support each matrix's written distinction. */
+.compare-visuals{margin:0 0 16px}
+.compare-images{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;width:min(100%,296px)}
+.compare-image-button{appearance:none;display:flex;flex-direction:column;align-items:stretch;min-width:0;padding:0;border:0;background:transparent;color:var(--ink);font:inherit;text-align:left;cursor:pointer;border-radius:12px}
+.compare-image-label{display:flex;align-items:center;gap:8px;min-height:44px;padding-bottom:8px}
+.compare-image-label>span{display:grid;place-items:center;width:28px;height:28px;flex:none;border:2px solid var(--ink);border-radius:8px;background:var(--lime);font:800 12px/1 var(--mono,monospace);box-shadow:2px 2px 0 var(--ink)}
+.compare-image-button:nth-child(2) .compare-image-label>span{background:var(--pink)}
+.compare-image-label b{font-size:14px;line-height:1.5;overflow-wrap:anywhere}
+.compare-image-button .example-figure{width:100%;margin:0;border:2px solid var(--ink);border-radius:12px;box-shadow:3px 3px 0 var(--ink)}
+.compare-image-link{min-height:44px;display:flex;align-items:center;margin-top:4px;color:var(--violet);font-size:12px;font-weight:700}
+.compare-image-button:hover .compare-image-link{text-decoration:underline;text-underline-offset:3px}
+.compare-image-button:focus-visible{outline:3px solid var(--violet);outline-offset:5px}
+.compare-visuals figcaption,.compare-image-note{margin:8px 0 0;color:var(--muted);font-size:12px;line-height:1.7}
+@media(max-width:480px){
+  .compare-images{gap:12px}
+  .compare-image-label{align-items:flex-start}
+  .compare-image-label b{font-size:12px}
+}

@@ -373,8 +373,9 @@
   });
   $('#copy-prompt').addEventListener('click',async()=>{
     const value=$('#compiled-prompt').value;
-    try { await navigator.clipboard.writeText(value); $('#creator-message').textContent='专业 Prompt 已复制。'; }
-    catch (_) { $('#compiled-prompt').select(); document.execCommand('copy'); $('#creator-message').textContent='专业 Prompt 已复制。'; }
+    await window.ATLAS_FEEDBACK.copyPrompt($('#copy-prompt'), value, {
+      field: $('#compiled-prompt'), status: $('#creator-message')
+    });
   });
   $('#generate-image').addEventListener('click',runGeneration);
   $('#regenerate-image').addEventListener('click',runGeneration);

@@ -1,0 +1,48 @@
+/* The approved feedback timing: press 100ms, mark 180ms, frame 200ms, stamp 220ms. */
+.chip,.beauty-chip,.body-chip,.atlas-observe-button{display:inline-flex;align-items:center;gap:8px;min-height:44px;box-shadow:2px 2px 0 var(--ink);transition:none}
+.chip::before,.beauty-chip::before,.body-chip::before,.atlas-observe-button::before{content:"";width:8px;height:8px;flex:none;border:1.5px solid currentColor;border-radius:50%}
+.chip:hover,.beauty-chip:hover,.body-chip:hover{transform:none}
+.chip[aria-pressed=true],.beauty-chip[aria-pressed=true],.body-chip[aria-pressed=true],.atlas-observe-button[aria-checked=true]{transform:translate(1px,1px);box-shadow:1px 1px 0 var(--ink)}
+.chip[aria-pressed=true]::before,.beauty-chip[aria-pressed=true]::before,.body-chip[aria-pressed=true]::before,.atlas-observe-button[aria-checked=true]::before{background:var(--lime);border-color:var(--lime);border-radius:2px}
+.atlas-prompt-heading{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.atlas-prompt-heading>span:first-child{margin:0}
+.atlas-copy-actions{display:inline-flex;align-items:center;flex-wrap:wrap;gap:12px;min-height:44px}
+.compiled-block>div{flex-wrap:wrap;gap:8px 12px}
+.atlas-copy-button,#copy-prompt{min-height:44px;padding:8px 12px;border:1.5px solid var(--ink);border-radius:8px;background:var(--lime);color:var(--ink);box-shadow:2px 2px 0 var(--ink);font:700 12px/1.6 "PingFang SC",sans-serif;cursor:pointer;overflow-wrap:anywhere}
+.atlas-copy-button:hover,#copy-prompt:hover{background:var(--pink)}
+.atlas-copy-button:disabled,#copy-prompt:disabled{opacity:.6;cursor:wait}
+.atlas-copy-stamp{display:inline-flex;align-items:center;gap:4px;min-height:40px;padding:8px 12px;border:2px solid var(--coral);border-radius:8px;color:var(--ink);font-size:12px;font-weight:800;opacity:0;transform:rotate(-5deg);pointer-events:none}
+.atlas-copy-stamp svg{width:16px;height:16px}
+.atlas-copy-actions.is-confirmed .atlas-copy-stamp{opacity:1}
+.interpret-panel .atlas-copy-stamp{color:var(--lime)}
+.atlas-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+.atlas-prompt-box [data-atlas-prompt]{white-space:pre-wrap;overflow-wrap:anywhere}
+.atlas-observer{width:min(100%,420px);margin:0 auto 24px}
+.atlas-observe-controls{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.atlas-observe-button{padding:8px 12px;border:1.5px solid var(--ink);border-radius:8px;background:var(--white,#fff);color:var(--ink);font:700 12px/1.6 "PingFang SC",sans-serif;cursor:pointer}
+.atlas-observe-button[aria-checked=true]{background:var(--violet);color:var(--white,#fff)}
+.atlas-observe-button:focus-visible,.atlas-copy-button:focus-visible,#copy-prompt:focus-visible{outline:3px solid var(--violet);outline-offset:4px}
+.atlas-reference-window{position:relative;width:100%;aspect-ratio:var(--focus-aspect,1);overflow:hidden;border:2px solid var(--ink);border-radius:16px;background:var(--paper)}
+.atlas-reference-window::after{content:"";position:absolute;inset:0;border:3px solid var(--coral);border-radius:14px;pointer-events:none;opacity:0}
+.atlas-reference-scene{position:absolute;top:50%;left:0;width:100%;aspect-ratio:1;background-image:var(--sheet);background-size:400% 300%;background-position:var(--x) var(--y);background-repeat:no-repeat;transform-origin:50% var(--focus-y,50%);transform:translateY(calc(-1 * var(--focus-y,50%))) scale(var(--focus-scale,1));transition:none}
+.atlas-observe-context{display:flex;align-items:center;gap:16px;margin-top:12px}
+.atlas-reference-thumb{position:relative;width:64px;height:64px;flex:none;background-image:var(--sheet);background-size:400% 300%;background-position:var(--x) var(--y);border-radius:8px}
+.atlas-reference-locator{position:absolute;top:0;left:0;border:2px solid var(--coral);border-radius:4px}
+.atlas-observer[data-view=full] .atlas-reference-locator{opacity:0}
+.atlas-observe-context p,.atlas-reference-note{font-size:12px;line-height:1.7;color:var(--muted)}
+.atlas-reference-note{margin:12px 0 0}
+@media(prefers-reduced-motion:no-preference){
+  .chip,.beauty-chip,.body-chip,.atlas-observe-button,.atlas-copy-button,#copy-prompt{transition:transform 100ms ease,box-shadow 100ms ease}
+  .chip:active,.beauty-chip:active,.body-chip:active,.atlas-observe-button:active,.atlas-copy-button:active:not(:disabled),#copy-prompt:active:not(:disabled){transform:translate(2px,2px);box-shadow:0 0 0 var(--ink)}
+  .atlas-chip-confirm::before{animation:atlas-chip-mark 180ms ease-out}
+  .atlas-reference-locator{transition:transform 180ms ease}
+  .atlas-focus-confirm::after{animation:atlas-focus-frame 200ms ease-out}
+  .atlas-copy-actions.is-confirmed .atlas-copy-stamp{animation:atlas-copy-land 220ms ease-out}
+  @keyframes atlas-chip-mark{0%{transform:scale(.6) rotate(-25deg)}65%{transform:scale(1.15) rotate(8deg)}100%{transform:scale(1) rotate(0)}}
+  @keyframes atlas-focus-frame{0%{opacity:0}40%{opacity:1}100%{opacity:0}}
+  @keyframes atlas-copy-land{0%{opacity:.3;transform:rotate(-12deg) scale(1.15)}65%{opacity:1;transform:rotate(-5deg) scale(.95)}100%{opacity:1;transform:rotate(-5deg) scale(1)}}
+}
+@media(prefers-reduced-motion:reduce){
+  .chip,.beauty-chip,.body-chip,.atlas-observe-button,.atlas-copy-button,#copy-prompt,.atlas-reference-locator{transition:none!important}
+  .atlas-chip-confirm::before,.atlas-focus-confirm::after,.atlas-copy-actions.is-confirmed .atlas-copy-stamp{animation:none!important}
+}

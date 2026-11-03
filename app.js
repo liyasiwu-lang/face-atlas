@@ -19,6 +19,10 @@
   function exampleVisual(tag, large=false) {
     const ex = examplesById[tag.id] || examples[tag.name];
     if (!ex) return `<div class="example-pending${large?' large':''}" aria-label="${escapeHTML(tag.name)}图例制作中"><span>图例制作中</span><small>已预留独立图例位</small></div>`;
+    if (large) {
+      const observation = window.ATLAS_FEEDBACK?.referenceHTML(ex);
+      if (observation) return observation;
+    }
     return `<figure class="example-figure${large?' large':''}"><div class="example-sprite" role="img" aria-label="${escapeHTML(ex.alt)}" style="--sheet:url('${escapeHTML(ex.file)}');--x:${ex.x};--y:${ex.y}"></div>${large?'<figcaption>研究校准的 AI 辅助图例 · 只表示核心结构，不替代多角度观察</figcaption>':''}</figure>`;
   }
 
@@ -150,7 +154,7 @@
         <div class="detail-box full"><span>互斥 / 共存规则</span><p>${escapeHTML(tag.coexist)}</p></div>
         <div class="detail-box full"><span>维度易混边界</span><p>${escapeHTML(fieldValue(tag,'confusion'))}</p></div>
         <div class="detail-box full"><span>维度美妆应用</span><p>${escapeHTML(fieldValue(tag,'makeup'))}</p></div>
-        <div class="detail-box full"><span>标签 Prompt</span><p>${escapeHTML(tag.prompt)}</p></div>
+        ${window.ATLAS_FEEDBACK?.promptHTML(tag.prompt) || `<div class="detail-box full"><span>标签 Prompt</span><p>${escapeHTML(tag.prompt)}</p></div>`}
       </div>
       ${provenanceHTML(tag)}
       <p class="kbd-hint">键盘：← → 切换上一条/下一条，Esc 关闭</p>
@@ -187,6 +191,25 @@
     $('#load-more').hidden = list.length <= visible;
   }
 
+  function compareVisuals(item) {
+    const names = item.pair.split(/\s+vs\s+/i);
+    if (names.length !== 2) return '';
+    const entries = names.map(name => {
+      const matches = tags.filter(tag => tag.name === name);
+      const tag = matches.length === 1 ? matches[0] : null;
+      return tag && (examplesById[tag.id] || examples[name]) ? tag : null;
+    });
+    if (entries.some(tag => !tag)) return '<p class="compare-image-note">这组对照的图例尚未配齐，请先参考下方判断说明。</p>';
+    return `<figure class="compare-visuals">
+      <div class="compare-images">${entries.map((tag, index) => `<button class="compare-image-button" type="button" data-compare-tag="${escapeHTML(tag.id)}" aria-label="查看${escapeHTML(tag.name)}图例与条目">
+        <span class="compare-image-label"><span aria-hidden="true">${index === 0 ? 'A' : 'B'}</span><b>${escapeHTML(tag.name)}</b></span>
+        ${exampleVisual(tag)}
+        <span class="compare-image-link">查看条目 ↗</span>
+      </button>`).join('')}</div>
+      <figcaption>独立的 AI 辅助图例，人物与拍摄条件可能不同；仅辅助理解，判断以文字说明为准。</figcaption>
+    </figure>`;
+  }
+
   function renderCompare() {
     const groups = [...new Set(confusions.map(item => item.group || '其他对照'))];
     if (!groups.includes(activeCompareGroup)) activeCompareGroup = groups[0];
@@ -198,6 +221,7 @@
       activeCompareGroup = button.dataset.group;
       selectedCompare = 0;
       renderCompare();
+      [...$('#compare-filters').querySelectorAll('button')].find(candidate => candidate.dataset.group === activeCompareGroup)?.focus({ preventScroll: true });
     }));
     if (!$('#compare-filters').dataset.kbInit) {
       $('#compare-filters').dataset.kbInit = '1';
@@ -231,11 +255,23 @@
     $('#compare-detail').setAttribute('aria-labelledby',`compare-tab-${selectedCompare}`);
     $('#compare-detail').innerHTML = `<span class="compare-badge">${escapeHTML(activeCompareGroup)} · ${String(selectedCompare+1).padStart(2,'0')} / ${String(matrix.length).padStart(2,'0')}</span>
       <h3>${escapeHTML(item.pair)}</h3>
+      ${compareVisuals(item)}
       <div class="compare-block"><span>核心区别</span><p>${escapeHTML(item.difference)}</p></div>
       <div class="compare-block tip-block"><span>最快判断</span><p>${escapeHTML(item.tip)}</p></div>`;
+    $('#compare-detail').querySelectorAll('[data-compare-tag]').forEach(button => button.addEventListener('click', () => {
+      const tag = tags.find(candidate => candidate.id === button.dataset.compareTag);
+      if (tag) {
+        button.focus({ preventScroll: true });
+        openTag(tag);
+      }
+    }));
     const tabs=[...$('#compare-list').querySelectorAll('button')];
     tabs.forEach((btn,index) => {
-      btn.addEventListener('click', () => { selectedCompare = Number(btn.dataset.index); renderCompare(); });
+      btn.addEventListener('click', () => {
+        selectedCompare = Number(btn.dataset.index);
+        renderCompare();
+        $(`#compare-tab-${selectedCompare}`).focus({ preventScroll: true });
+      });
       btn.addEventListener('keydown', event => {
         if (!['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Home','End'].includes(event.key)) return;
         event.preventDefault();
@@ -319,6 +355,7 @@
   $('#tag-dialog').addEventListener('click', e => { if (e.target === $('#tag-dialog')) $('#tag-dialog').close(); });
   $('#tag-dialog').addEventListener('keydown', e => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    if (e.target.closest('[data-atlas-observer]')) return;
     if (e.target.matches('input,textarea,select,[contenteditable="true"]')) return;
     if (!tagDialogNav || tagDialogNav.list.length < 2) return;
     e.preventDefault();
